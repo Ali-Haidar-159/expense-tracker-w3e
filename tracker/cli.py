@@ -117,6 +117,8 @@ class ExpenseCLI:
             # Format output
             if args.format == "table":
                 print(self.format_expense_table(expenses))
+            elif args.format == "csv":
+                self._print_csv(expenses)
             
         except ValueError as e:
             logger.error(f"Validation error: {e}")
@@ -210,8 +212,8 @@ class ExpenseCLI:
                 print("Error: At least one field must be provided to edit", file=sys.stderr)
                 sys.exit(1)
             
-            result = self.service.edit_expense (
-                expense_id= args.id,
+            result = self.service.edit_expense(
+                expense_id=args.id,
                 date=args.date,
                 category=args.category,
                 amount=args.amount,
@@ -249,23 +251,26 @@ def create_parser() -> argparse.ArgumentParser:
     
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
     
-    # Add command for expenses 
+    # Add command
     add_parser = subparsers.add_parser("add", help="Add a new expense")
     add_parser.add_argument("--date", help="Date (YYYY-MM-DD, default: today)")
     add_parser.add_argument("--category", required=True, help="Category (e.g., food, transport)")
-    add_parser.add_argument("--amount",required=True, type=float, help="How muxh amount spent")
-    add_parser.add_argument("--note", help="Optional note for giving extar data")
-    add_parser.add_argument("--currency", default="BDT", help="Currency")
+    add_parser.add_argument("--amount", required=True, type=float, help="Amount spent")
+    add_parser.add_argument("--note", help="Optional note")
+    add_parser.add_argument("--currency", default="BDT", help="Currency code (default: BDT)")
     
     # List command
     list_parser = subparsers.add_parser("list", help="List expenses with filters")
     list_parser.add_argument("--month", help="Filter by month (YYYY-MM)")
+    list_parser.add_argument("--from", dest="from_date", help="From date (YYYY-MM-DD)")
+    list_parser.add_argument("--to", dest="to_date", help="To date (YYYY-MM-DD)")
     list_parser.add_argument("--category", help="Filter by category")
     list_parser.add_argument("--min", type=float, help="Minimum amount")
     list_parser.add_argument("--max", type=float, help="Maximum amount")
     list_parser.add_argument("--sort", choices=["date", "amount", "category"], default="date", help="Sort by field")
     list_parser.add_argument("--desc", action="store_true", help="Sort in descending order")
     list_parser.add_argument("--limit", type=int, help="Limit number of results")
+    list_parser.add_argument("--format", choices=["table", "csv"], default="table", help="Output format")
     
     # Summary command
     summary_parser = subparsers.add_parser("summary", help="Show expense summary")
@@ -285,6 +290,7 @@ def create_parser() -> argparse.ArgumentParser:
     edit_parser.add_argument("--category", help="New category")
     edit_parser.add_argument("--amount", type=float, help="New amount")
     edit_parser.add_argument("--note", help="New note")
+    edit_parser.add_argument("--currency", help="New currency")
     
     return parser
 
@@ -296,7 +302,7 @@ def main():
     
     if not args.command:
         parser.print_help()
-        sys.exit(1) //stop the code 
+        sys.exit(1)
     
     # Initialize service and CLI
     service = ExpenseService()
