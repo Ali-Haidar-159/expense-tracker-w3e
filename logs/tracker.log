@@ -1,0 +1,45 @@
+2026-01-29 10:29:09 - tracker.storage - INFO - Created new data file: data/expenses.json
+2026-01-29 10:29:09 - tracker.cli - INFO - CLI: add command called with args: Namespace(command='add', date='2026-01-25', category='transport', amount=80.0, note='Rickshaw', currency='BDT')
+2026-01-29 10:29:09 - tracker.service - INFO - Adding expense: category=transport, amount=80.0
+2026-01-29 10:29:09 - tracker.storage - INFO - Loaded 0 expenses from file
+2026-01-29 10:29:09 - tracker.storage - INFO - Loaded 0 expenses from file
+2026-01-29 10:29:09 - tracker.storage - INFO - Saved 1 expenses to file
+2026-01-29 10:29:09 - tracker.storage - INFO - Added expense: EXP-20260125-0001
+2026-01-29 10:29:09 - tracker.service - INFO - Successfully added expense: EXP-20260125-0001
+2026-01-29 10:29:45 - tracker.cli - INFO - CLI: add command called with args: Namespace(command='add', date='2026-01-25', category='food', amount=120.0, note='Lunch', currency='BDT')
+2026-01-29 10:29:45 - tracker.service - INFO - Adding expense: category=food, amount=120.0
+2026-01-29 10:29:45 - tracker.storage - INFO - Loaded 1 expenses from file
+2026-01-29 10:29:45 - tracker.storage - INFO - Loaded 1 expenses from file
+2026-01-29 10:29:45 - tracker.storage - INFO - Saved 2 expenses to file
+2026-01-29 10:29:45 - tracker.storage - INFO - Added expense: EXP-20260125-0002
+2026-01-29 10:29:45 - tracker.service - INFO - Successfully added expense: EXP-20260125-0002
+2026-01-29 10:30:21 - tracker.cli - INFO - CLI: add command called with args: Namespace(command='add', date='2026-01-26', category='rent', amount=400.0, note='Room rent', currency='BDT')
+2026-01-29 10:30:21 - tracker.service - INFO - Adding expense: category=rent, amount=400.0
+2026-01-29 10:30:21 - tracker.storage - INFO - Loaded 2 expenses from file
+2026-01-29 10:30:21 - tracker.storage - INFO - Loaded 2 expenses from file
+2026-01-29 10:30:21 - tracker.storage - INFO - Saved 3 expenses to file
+2026-01-29 10:30:21 - tracker.storage - INFO - Added expense: EXP-20260126-0001
+2026-01-29 10:30:21 - tracker.service - INFO - Successfully added expense: EXP-20260126-0001
+2026-01-29 10:30:42 - tracker.cli - INFO - CLI: list command called with args: Namespace(command='list', month=None, from_date=None, to_date=None, category=None, min=None, max=None, sort='date', desc=False, limit=None, format='table')
+2026-01-29 10:30:42 - tracker.service - INFO - Listing expenses with filters: month=None, category=None
+2026-01-29 10:30:42 - tracker.storage - INFO - Loaded 3 expenses from file
+2026-01-29 10:30:42 - tracker.service - INFO - Returning 3 expenses
+2026-01-29 10:31:40 - tracker.cli - INFO - CLI: list command called with args: Namespace(command='list', month='2026-01', from_date=None, to_date=None, category=None, min=None, max=None, sort='amount', desc=True, limit=None, format='table')
+2026-01-29 10:31:40 - tracker.service - INFO - Listing expenses with filters: month=2026-01, category=None
+2026-01-29 10:31:40 - tracker.storage - INFO - Loaded 3 expenses from file
+2026-01-29 10:31:40 - tracker.service - INFO - Returning 3 expenses
+2026-01-29 10:31:58 - tracker.cli - INFO - CLI: summary command called with args: Namespace(command='summary', month='2026-01', from_date=None, to_date=None, category=None)
+2026-01-29 10:31:58 - tracker.service - INFO - Generating summary: month=2026-01, category=None
+2026-01-29 10:31:58 - tracker.service - INFO - Listing expenses with filters: month=2026-01, category=None
+2026-01-29 10:31:58 - tracker.storage - INFO - Loaded 3 expenses from file
+2026-01-29 10:31:58 - tracker.service - INFO - Returning 3 expenses
+2026-01-29 10:32:35 - tracker.cli - INFO - CLI: edit command called with args: Namespace(command='edit', id='EXP-20260126-0001', date=None, category=None, amount=300.0, note='Lunch+coffee', currency=None)
+2026-01-29 10:32:35 - tracker.service - INFO - Editing expense: EXP-20260126-0001
+2026-01-29 10:32:35 - tracker.storage - INFO - Loaded 3 expenses from file
+2026-01-29 10:32:35 - tracker.storage - INFO - Saved 3 expenses to file
+2026-01-29 10:32:35 - tracker.storage - INFO - Updated expense: EXP-20260126-0001
+2026-01-29 10:32:35 - tracker.service - INFO - Successfully edited expense: EXP-20260126-0001
+2026-01-29 10:33:25 - tracker.cli - INFO - CLI: add command called with args: Namespace(command='add', date='2026-01-26', category='food', amount=-50.0, note=None, currency='BDT')
+2026-01-29 10:33:25 - tracker.service - INFO - Adding expense: category=food, amount=-50.0
+2026-01-29 10:33:25 - tracker.validation - WARNING - Invalid amount (must be > 0): -50.0
+2026-01-29 10:33:25 - tracker.cli - ERROR - Validation error: Error: amount must be > 0
