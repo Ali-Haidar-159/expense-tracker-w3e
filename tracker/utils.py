@@ -13,7 +13,7 @@ def generate_id(date: str) -> str:
         Unique expense ID
     """
     # Get all expenses for the same date
-    all_expenses = self.storage.load_all()
+    all_expenses = storage.load_all()
     date_prefix = f"EXP-{date.replace('-', '')}"
     
     # Find highest sequence number for this date
@@ -29,3 +29,4 @@ def generate_id(date: str) -> str:
     # Generate new ID with next sequence number
     new_seq = max_seq + 1
     return f"{date_prefix}-{new_seq:04d}"
+
